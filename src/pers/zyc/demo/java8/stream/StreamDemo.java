@@ -2,6 +2,7 @@ package pers.zyc.demo.java8.stream;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author zhangyancheng
@@ -20,6 +21,28 @@ public class StreamDemo {
 			this.score = score;
 			this.subject = subject;
 		}
+	}
+
+	/**
+	 * 打印所有成绩单姓名
+	 */
+	static void demo0() {
+		Score s1 = new Score("stu1", 15, 30, "A");
+		Score s2 = new Score("stu1", 15, 20, "B");
+		Score s3 = new Score("stu2", 15, 20, "A");
+
+		// 通过数组创建Stream
+		Arrays.stream(new Score[] {s1, s2, s3}).map(score -> score.name).forEach(System.out::println);
+		// 通过集合获取Stream
+		new ArrayList<Score>() {
+			{
+				add(s1);
+				add(s2);
+				add(s3);
+			}
+		}.stream().map(score -> score.name).forEach(System.out::println);
+		// 直接通过元素创建Stream
+		Stream.of(s1, s2, s3).map(score -> score.name).forEach(System.out::println);
 	}
 
 	static void demo1() {
@@ -76,9 +99,19 @@ public class StreamDemo {
 				HashMap<String, Double>::putAll));
 	}
 
+	static void demo4() {
+		List<Score> scores = Arrays.asList(
+				new Score("lucy", 13, 10, "A"),
+				new Score("mark", 14, 20, "A"),
+				new Score("tong", 15, 30, "B")
+		);
+		System.out.println(scores.stream().collect(Collectors.groupingBy((score -> score.subject))));
+	}
+
 	public static void main(String[] args) {
 		//demo1();
 		//demo2();
-		demo3();
+		//demo3();
+		demo4();
 	}
 }
