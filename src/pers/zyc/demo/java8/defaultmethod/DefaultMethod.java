@@ -7,7 +7,7 @@ import java.util.function.Supplier;
  */
 public class DefaultMethod {
 
-	interface Default {
+	private interface Default {
 
 		default String noNeedImplement() {
 			return "Default implementation";
@@ -19,10 +19,10 @@ public class DefaultMethod {
 	}
 
 
-	static class DefaultImpl implements Default {
+	private static class DefaultImpl implements Default {
 	}
 
-	static class OverrideImpl implements Default {
+	private static class OverrideImpl implements Default {
 
 		@Override
 		public String noNeedImplement() {

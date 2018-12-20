@@ -12,14 +12,14 @@ package pers.zyc.demo.java8.defaultmethod;
  */
 public class Inheritance {
 
-	interface Swimable {
+	private interface Swimable {
 
 		default String swim() {
 			return "I can swim.";
 		}
 	}
 
-	static abstract class Fish implements Swimable {
+	private static abstract class Fish implements Swimable {
 
 		@Override
 		public String swim() {
@@ -28,10 +28,10 @@ public class Inheritance {
 	}
 
 	// 按照类优先规则, Tuna将继承父类Fish的swim方法
-	static class Tuna extends Fish implements Swimable {
+	private static class Tuna extends Fish implements Swimable {
 	}
 
-	interface Diveable extends Swimable {
+	private interface Diveable extends Swimable {
 
 		@Override
 		default String swim() {
@@ -44,7 +44,7 @@ public class Inheritance {
 	}
 
 	// 子接口优先规则, Duck将继承Diveable接口的swim方法
-	static class Duck implements Diveable, Swimable {
+	private static class Duck implements Diveable, Swimable {
 	}
 
 	public static void main(String[] args) {

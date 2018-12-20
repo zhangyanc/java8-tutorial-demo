@@ -9,11 +9,11 @@ package pers.zyc.demo.java8.defaultmethod;
  */
 public class DiamondInheritance {
 
-	interface Animal {
+	private interface Animal {
 		String go();
 	}
 
-	interface Horse extends Animal {
+	private interface Horse extends Animal {
 		@Override
 		default String go() {
 			return getClass().getSimpleName() + " walks on four legs";
@@ -24,7 +24,7 @@ public class DiamondInheritance {
 		}
 	}
 
-	interface Bird extends Animal {
+	private interface Bird extends Animal {
 
 		@Override
 		default String go() {
@@ -37,7 +37,7 @@ public class DiamondInheritance {
 	}
 
 	// Pegasus必须显示实现(重写)go方法
-	static class Pegasus implements Horse, Bird {
+	private static class Pegasus implements Horse, Bird {
 
 		@Override
 		public String go() {
